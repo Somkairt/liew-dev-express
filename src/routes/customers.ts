@@ -7,8 +7,7 @@ const router = Router();
 
 router.get(
 	"/customers/:id",
-	(req, res, next) => {
-		console.log("-------------");
+	(req, _res, next) => {
 		const schema = z.object({
 			id: z.coerce.number(),
 		});
@@ -19,16 +18,15 @@ router.get(
 			next(badRequest());
 		}
 	},
-	async (_req, res, next) => {
-		console.log("*****___*******");
+	async (req, res, next) => {
 		try {
 			const connection = await pool.getConnection();
 
 			try {
 				const result = await connection.query(
-					"SELECT * FROM customers WHERE customers.id;",
+					`SELECT * FROM customers WHERE customers.id = "${req.params.id}";`,
 				);
-				res.json({ result });
+				res.json({ result: result[0] });
 			} catch (error) {
 				next(error);
 			} finally {
