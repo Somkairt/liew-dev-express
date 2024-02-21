@@ -1,7 +1,7 @@
 import { badRequest } from "@hapi/boom";
 import { Router } from "express";
 import { z } from "zod";
-import { pool } from "../app";
+import { pool } from "../utils/app";
 
 const router = Router();
 
