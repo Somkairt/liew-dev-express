@@ -1,5 +1,5 @@
 import request from "supertest";
-import { app, pool } from "../../utils/app";
+import { app, pool } from "../../app";
 
 afterEach(() => {
 	pool.end();
