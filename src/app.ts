@@ -4,7 +4,12 @@ import express from "express";
 import { createPool } from "mysql2/promise";
 import ServerlessHttp from "serverless-http";
 import errorHandler from "./middlewares/errors";
+<<<<<<< HEAD
 import customersRouter from "./routes/customers";
+=======
+
+import CustomersIdRouter from "./routes/CustomersId";
+>>>>>>> feature/liew/get_customer
 import foodRouter from "./routes/foods";
 
 export const app = express();
@@ -32,5 +37,9 @@ app.get("/", (req, res) => {
 });
 
 app.use(foodRouter);
+<<<<<<< HEAD
 app.use(customersRouter);
+=======
+app.use(CustomersIdRouter);
+>>>>>>> feature/liew/get_customer
 app.use(errorHandler);
