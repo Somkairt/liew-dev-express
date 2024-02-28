@@ -1,6 +1,6 @@
 import request from "supertest";
 import { app, pool } from "../../app";
-afterEach(() => {
+afterAll(() => {
 	pool.end();
 });
 
@@ -14,4 +14,11 @@ test("GET customers by iD", async () => {
 	expect(data.every(({ id }) => id === 1)).toBe(true);
 
 	expect(data.length === 1).toBe(true);
+});
+test("should return empty result if customer is not found", async () => {
+	const response = await request(app).get("/customers/70");
+
+	expect(response.status).toBe(200);
+
+	expect(response.body.result).toEqual([]);
 });
