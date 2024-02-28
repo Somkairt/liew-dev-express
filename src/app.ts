@@ -4,8 +4,7 @@ import express from "express";
 import { createPool } from "mysql2/promise";
 import ServerlessHttp from "serverless-http";
 import errorHandler from "./middlewares/errors";
-
-import CustomersIdRouter from "./routes/CustomersId";
+import CustomersIdRouter from "./routes/customers";
 import foodRouter from "./routes/foods";
 
 export const app = express();
