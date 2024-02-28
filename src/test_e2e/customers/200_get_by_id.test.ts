@@ -20,5 +20,5 @@ test("should return empty result if customer is not found", async () => {
 
 	expect(response.status).toBe(200);
 
-	expect(response.body.result).toEqual([]);
+	expect(response.body.result.length === 0).toBe(true);
 });
